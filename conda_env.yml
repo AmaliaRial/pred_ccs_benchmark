@@ -1,0 +1,14 @@
+name: deepccs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.7
+  - tensorflow=1.14
+  - scikit-learn=0.21
+  - pandas=0.25
+  - numpy=1.16
+  - rdkit
+  - pip
+  - pip:
+      - keras==2.2.4
