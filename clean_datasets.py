@@ -15,7 +15,7 @@ DATA_DIR = ROOT_DIR / "datasets"
 OUT_DIR = BASE_DIR / "data"
 OUT_DIR.mkdir(exist_ok=True, parents=True)
 
-
+#TODO ver por que no mete los nombres de dataset
 def clean_ccsbase(input_file, output_file):
     """
     Limpia ccsbase_descriptors:
@@ -24,20 +24,20 @@ def clean_ccsbase(input_file, output_file):
     df = pd.read_csv(input_file, low_memory=False)
 
     df_clean = pd.DataFrame()
-    df_clean["dataset"] = "ccsbase"
+    df_clean["dataset"] = "ccsbase" #TODO ver por que no mete los nombres de dataset
     df_clean["id"] = df["id"]
     df_clean["name"] = df["name"]
 
     # estructura: solo SMILES aquí
     df_clean["smiles"] = df["smi"]
-    df_clean["inchi"] = None  # no disponible en este fichero
+    df_clean["inchi"] = None  # no hay InChI en este
 
     df_clean["adduct"] = df["adduct"]
     df_clean["ccs"] = df["ccs"]
     df_clean["is_3D"] = df.get("is_3D", None)
     df_clean["gas"] = "N2"
 
-    # opcionalmente conservas m/z, type, z:
+    # los dejo estos por si aca
     df_clean["mz"] = df.get("m/z", None)
     df_clean["type"] = df.get("type", None)
     df_clean["charge"] = df.get("z", None)
@@ -61,7 +61,7 @@ def clean_allccs(input_file, output_file):
     df_clean["id"] = df["AllCCS ID"]
     df_clean["name"] = df["Name"]
 
-    # Structure la usamos como SMILES (es la representación que dan)
+    # Structure la usamos como SMILES
     df_clean["smiles"] = df["Structure"]
     df_clean["inchi"] = df["InChI"]
 
@@ -124,7 +124,7 @@ def clean_metlin_lipids(input_file, output_file):
     df_clean["dataset"] = "metlinlipidims"
     df_clean["id"] = None  # este fichero no tiene ID numérico claro
     df_clean["name"] = melted["Name"]
-    df_clean["smiles"] = None  # no hay smiles en este fichero
+    df_clean["smiles"] = None  # no hay smiles
     df_clean["inchi"] = melted["InChI"]
     df_clean["adduct"] = melted["adduct"]
     df_clean["ccs"] = melted["ccs"]
@@ -145,7 +145,7 @@ def clean_metlin_ims(input_file, output_file, sep="\t"):
     Molecule Name Molecular Formula METLIN ID Precursor Adduct CCS1 CCS2 CCS3
     CCS_AVG % CV m/z Adduct m/z.1 Dimer Dimer.1 dimer line CCS m/z.2
     pubChem inchi smiles InChIKEY is_3D
-    """
+    """ #TODO ver bien la separacion de los nombres en el archivo original
     df = pd.read_csv(input_file, sep=sep, low_memory=False)
 
     df_clean = pd.DataFrame()
@@ -189,7 +189,7 @@ def main():
     clean_metlin_ims(
         DATA_DIR / "METLIN_IMS_descriptors.tsv",
         OUT_DIR / "dataset_metlinims.csv",
-        sep=",",  
+        sep=",",
     )
 
 

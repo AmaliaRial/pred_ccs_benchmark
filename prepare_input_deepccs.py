@@ -14,12 +14,11 @@ def make_input_for_deepccs(dataset: str):
 
     df = pd.read_csv(src)
 
-    # Creamos el input con las columnas que espera DeepCCS
     out_df = pd.DataFrame()
     out_df["SMILES"] = df["smiles"]
 
     # DeepCCS espera aductos en formato tipo M+H, M+Na, M-H, etc.
-    # Si tus aductos ya vienen así pero entre corchetes ([M+H]+), toca limpiarlos.
+    #toca limpiarlos
     def normalize_adduct(a: str) -> str:
         # ej: "[M+H]+" -> "M+H"
         if isinstance(a, str):

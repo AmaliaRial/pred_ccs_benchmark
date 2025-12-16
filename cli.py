@@ -6,17 +6,16 @@ from pathlib import Path
 
 import pandas as pd
 
-# ---- CONFIG ----
 
 DEFAULT_DATASETS = ["allccs", "metlinims", "metlinlipidims", "ccsbase"]
 DEFAULT_TOOLS = ["darkchem", "allccs", "ccsbase", "deepccs", "ccsp2", "hyperccs"]
-# cuando el modelo esté listo: DEFAULT_TOOLS.append("ourmodel")
+# cuando el modelo esté listo -> DEFAULT_TOOLS.append("ourmodel") o bueno, lo meto a mano tb
 
-BASE_DIR = Path(__file__).resolve().parent          # .../pred_ccs_benchmark
-DATA_DIR = BASE_DIR / "data"                       # cleaned datasets
-PRED_DIR = BASE_DIR / "predictions"                # predictions/<dataset>/<tool>.csv
-RESULTS_DIR = BASE_DIR / "results"                 # results/<dataset>/<tool>/
-BENCHMARK_DIR = BASE_DIR / "benchmark"             # global tables etc.
+BASE_DIR = Path(__file__).resolve().parent  # .../pred_ccs_benchmark --> nos catamos del typo de doble C 
+DATA_DIR = BASE_DIR / "data" # cleaned datasets
+PRED_DIR = BASE_DIR / "predictions" # predictions/<dataset>/<tool>.csv
+RESULTS_DIR = BASE_DIR / "results" # results/<dataset>/<tool>/
+BENCHMARK_DIR = BASE_DIR / "benchmark" # global tables etc.
 
 CREATE_REPORT_SCRIPT = BASE_DIR / "create_report.py"
 
@@ -151,7 +150,6 @@ def build_compounds_table(dataset, tools, output_file=None):
     print(f"[INFO] Saved compounds table for dataset {dataset} to {output_file}")
 
 
-# ---- CLI ENTRYPOINT ----
 
 def main():
     parser = argparse.ArgumentParser(description="CCS benchmark CLI")
