@@ -2,16 +2,18 @@ import pandas as pd
 import os
 from pathlib import Path
 
-# Folder where *this* script lives: .../repos/pred_css_benchmark/pred_ccs_benchmark
+#cuidado con la doble S en el nombre la carpeta
+
+# .../repos/pred_css_benchmark/pred_ccs_benchmark
 BASE_DIR = Path(__file__).resolve().parent
 
-# Project root: .../repos/pred_css_benchmark
+# .../repos/pred_css_benchmark
 ROOT_DIR = BASE_DIR.parent
 
-# Raw datasets: .../repos/pred_css_benchmark/datasets
+# .../repos/pred_css_benchmark/datasets
 DATA_DIR = ROOT_DIR / "datasets"
 
-# Clean datasets: .../repos/pred_css_benchmark/pred_ccs_benchmark/data
+# .../repos/pred_css_benchmark/pred_ccs_benchmark/data
 OUT_DIR = BASE_DIR / "data"
 OUT_DIR.mkdir(exist_ok=True, parents=True)
 

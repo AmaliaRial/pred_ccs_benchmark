@@ -11,7 +11,7 @@ DEFAULT_DATASETS = ["allccs", "metlinims", "metlinlipidims", "ccsbase"]
 DEFAULT_TOOLS = ["darkchem", "allccs", "ccsbase", "deepccs", "ccsp2", "hyperccs"]
 # cuando el modelo esté listo -> DEFAULT_TOOLS.append("ourmodel") o bueno, lo meto a mano tb
 
-BASE_DIR = Path(__file__).resolve().parent  # .../pred_ccs_benchmark --> nos catamos del typo de doble C 
+BASE_DIR = Path(__file__).resolve().parent  # .../pred_ccs_benchmark 
 DATA_DIR = BASE_DIR / "data" # cleaned datasets
 PRED_DIR = BASE_DIR / "predictions" # predictions/<dataset>/<tool>.csv
 RESULTS_DIR = BASE_DIR / "results" # results/<dataset>/<tool>/
